@@ -1,0 +1,29 @@
+2017-06-29  Jakub Jelinek  <jakub@redhat.com>
+
+	* c-common.h (c_finish_omp_for): Add FINAL_P argument.
+	* c-omp.c (check_omp_for_incr_expr): Formatting fixes.
+	(c_finish_omp_for): Add FINAL_P argument.  Allow NE_EXPR
+	even in OpenMP loops, diagnose if NE_EXPR and incr expression
+	is not constant expression 1 or -1.  Transform NE_EXPR loops
+	with iterators pointers to VLA into LT_EXPR or GT_EXPR loops.
+
+2017-06-12  Jakub Jelinek  <jakub@redhat.com>
+
+	* c-common.h (c_finish_omp_taskgroup): Add CLAUSES argument.
+	* c-omp.c (c_finish_omp_taskgroup): Likewise.  Set
+	OMP_TASKGROUP_CLAUSES to it.
+	(c_omp_split_clauses): Handle in_reduction clause.  Handle
+	reduction clause on taskloop simd.
+	* c-pragma.h (enum pragma_omp_clause): Add
+	PRAGMA_OMP_CLAUSE_IN_REDUCTION and PRAGMA_OMP_CLAUSE_TASK_REDUCTION.
+
+2017-05-10  Jakub Jelinek  <jakub@redhat.com>
+
+	* c-omp.c (c_omp_split_clauses): Copy
+	OMP_CLAUSE_LASTPRIVATE_CONDITIONAL.
+
+Copyright (C) 2017 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
